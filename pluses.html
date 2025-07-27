@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grains & Pulses - VendorBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md py-6 text-center">
+    <h1 class="text-3xl font-bold text-green-700">🌾 Grains & Pulses</h1>
+    <p class="text-gray-600 mt-1">Staples for healthy living from sustainable farms</p>
+  </header>
+
+  <!-- GRAINS & PULSES GRID -->
+  <section class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 px-4">
+
+    <!-- Product 1 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://ceotab.com/wp-content/uploads/2023/08/Basmati-Rice.jpg" class="w-full h-40 object-cover rounded-lg" alt="Basmati Rice">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Basmati Rice</h3>
+      <p class="text-sm text-gray-600">Long-grain aromatic rice perfect for biryani.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹120 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Aged Premium</p>
+      <button onclick="openPaymentModal('Basmati Rice', 120)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://adidevgroup.com/img/products/toor-daal.jpg" class="w-full h-40 object-cover rounded-lg" alt="Toor Dal">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Toor Dal</h3>
+      <p class="text-sm text-gray-600">Protein-rich split pigeon peas for daily cooking.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹140 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Unpolished</p>
+      <button onclick="openPaymentModal('Toor Dal', 140)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGrVLXjEaOBtaDWdWGhfXF06bMNewyQ9SOPw&s" class="w-full h-40 object-cover rounded-lg" alt="Chickpeas">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Chickpeas</h3>
+      <p class="text-sm text-gray-600">Versatile legumes for hummus, curries & salads.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹110 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Bold Grains</p>
+      <button onclick="openPaymentModal('Chickpeas', 110)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2024/6/424055315/MH/PV/ML/25044508/white-quinoa-seeds-500x500.jpeg" class="w-full h-40 object-cover rounded-lg" alt="Quinoa">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Quinoa</h3>
+      <p class="text-sm text-gray-600">Superfood rich in protein, fiber & minerals.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹400 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Organic Certified</p>
+      <button onclick="openPaymentModal('Quinoa', 400)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2023/08/moong-dal.jpg" class="w-full h-40 object-cover rounded-lg" alt="Moong Dal">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Moong Dal</h3>
+      <p class="text-sm text-gray-600">Light & easy-to-digest split green gram.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹130 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Unpolished</p>
+      <button onclick="openPaymentModal('Moong Dal', 130)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://cdn.britannica.com/80/157180-050-7B906E02/Heads-wheat-grains.jpg" class="w-full h-40 object-cover rounded-lg" alt="Whole Wheat">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Whole Wheat</h3>
+      <p class="text-sm text-gray-600">Stone-ground flour for soft & healthy chapatis.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹55 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Naturally Aged</p>
+      <button onclick="openPaymentModal('Whole Wheat', 55)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+  </section>
+
+  <!-- PAYMENT MODAL -->
+  <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-80">
+      <h2 id="modalProduct" class="text-lg font-bold text-gray-800"></h2>
+      <p id="modalPrice" class="text-green-600 font-semibold mt-1"></p>
+
+      <label class="block mt-4 text-sm font-medium text-gray-700">Quantity</label>
+      <input type="number" id="modalQuantity" value="1" min="1" class="w-full border rounded p-2 mt-1">
+
+      <p id="modalTotal" class="text-gray-800 font-bold mt-2"></p>
+
+      <div class="flex justify-between mt-4">
+        <button onclick="closePaymentModal()" class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">Cancel</button>
+        <button onclick="confirmPayment()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let selectedProduct = '';
+    let selectedPrice = 0;
+
+    function openPaymentModal(productName, price) {
+      selectedProduct = productName;
+      selectedPrice = price;
+
+      document.getElementById('modalProduct').innerText = productName;
+      document.getElementById('modalPrice').innerText = `₹${price} per unit`;
+
+      const modal = document.getElementById('paymentModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const qty = parseInt(document.getElementById('modalQuantity').value) || 1;
+      document.getElementById('modalTotal').innerText = `Total: ₹${qty * selectedPrice}`;
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.add('hidden');
+    }
+
+    function confirmPayment() {
+      const qty = parseInt(document.getElementById('modalQuantity').value);
+      const total = qty * selectedPrice;
+      closePaymentModal();
+      alert(`✅ Payment Successful!\n\nProduct: ${selectedProduct}\nQuantity: ${qty}\nTotal Paid: ₹${total}`);
+    }
+
+    document.getElementById('modalQuantity').addEventListener('input', updateTotal);
+  </script>
+
+</body>
+</html>

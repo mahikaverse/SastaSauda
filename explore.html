@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor List</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0fdf4;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #0ac775;
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .vendor-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .vendor-card {
+      background-color: #d1fae5;
+      border-radius: 15px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: inherit;
+    }
+
+    .vendor-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-pic {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid #0ac775;
+      object-fit: cover;
+    }
+
+    .vendor-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vendor-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #065f46;
+    }
+
+    .vendor-category {
+      font-size: 1rem;
+      color: #333;
+      margin-top: 3px;
+    }
+
+    .trusted {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      color: #0f9d58;
+      font-weight: 600;
+      gap: 5px;
+    }
+
+    .verified-icon {
+      width: 18px;
+      height: 18px;
+      filter: brightness(0) saturate(100%) invert(45%) sepia(71%) saturate(316%) hue-rotate(89deg) brightness(97%) contrast(101%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Vendors on our Platform</h1>
+
+  <div class="vendor-container">
+    <!-- Vendor 1 -->
+    <a href="profile.html">
+      <div class="vendor-card">
+        <div class="left-section">
+          <img class="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            alt="Vendor 1" />
+          <div class="vendor-info">
+            <div class="vendor-name">Pramod Vegetable</div>
+            <div class="vendor-category">Vegetable Vendor</div>
+          </div>
+        </div>
+        <div class="trusted">
+          <img class="verified-icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Verified" />
+          Trusted
+        </div>
+      </div>
+    </a>
+
+    <!-- Vendor 2 -->
+    <a href="kalpjain.html">
+      <div class="vendor-card">
+        <div class="left-section">
+          <img class="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            alt="Vendor 2" />
+          <div class="vendor-info">
+            <div class="vendor-name">kalpjain kandewala</div>
+            <div class="vendor-category">Vegetable Vendor</div>
+          </div>
+        </div>
+        <div class="trusted" style="color: red;">
+          <img style="filter: hue-rotate(0deg) saturate(1000%) brightness(90%);">
+          NotTrusted
+        </div>
+
+      </div>
+    </a>
+
+    <!-- Vendor 3 -->
+    <a href="ayush.html">
+      <div class="vendor-card">
+        <div class="left-section">
+          <img class="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            alt="Vendor 3" />
+          <div class="vendor-info">
+            <div class="vendor-name">Bind Muttonwallah</div>
+            <div class="vendor-category">Meat Vendor</div>
+          </div>
+        </div>
+        <div class="trusted">
+          <img class="verified-icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Verified" />
+          Trusted
+        </div>
+      </div>
+    </a>
+
+    <!-- Vendor 4 -->
+    <a href="abidi.html">
+      <div class="vendor-card">
+        <div class="left-section">
+          <img class="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            alt="Vendor 4" />
+          <div class="vendor-info">
+            <div class="vendor-name">Abidi Wholesale wala</div>
+            <div class="vendor-category">Grains Vendor</div>
+          </div>
+        </div>
+        <div class="trusted">
+          <img class="verified-icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Verified" />
+          Trusted
+        </div>
+      </div>
+    </a>
+
+    <!-- Vendor 5 -->
+    <a href="elonmusk.html">
+      <div class="vendor-card">
+        <div class="left-section">
+          <img class="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+            alt="Vendor 5" />
+          <div class="vendor-info">
+            <div class="vendor-name">Elonmusk Milk centre</div>
+            <div class="vendor-category">Diary Vendor</div>
+          </div>
+        </div>
+        <div class="trusted">
+          <img class="verified-icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Verified" />
+          Trusted
+        </div>
+      </div>
+    </a>
+  </div>
+</body>
+
+</html>

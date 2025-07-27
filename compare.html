@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vendor Price Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ecfdf5;
+      margin: 0;
+      padding: 20px;
+      color: #065f46;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #047857;
+      margin-bottom: 20px;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #10b981;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #059669;
+    }
+    .selector {
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 25px;
+    }
+    select {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .products button {
+      padding: 12px 20px;
+      background-color: #d1fae5;
+      border: 2px solid #10b981;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .products button:hover {
+      background-color: #a7f3d0;
+      transform: scale(1.05);
+    }
+    .graph-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    #productTitle {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #065f46;
+    }
+    canvas {
+      width: 100% !important;
+      height: 350px !important;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <h1>Compare Product Prices with<br> different Vendors</h1>
+
+  <div class="selector">
+    <label for="category">Select Category:</label>
+    <select id="category">
+      <option value="">--Choose--</option>
+      <option value="meatsfish">Meats & Fish</option>
+      <option value="leafyveg">Fresh Leafy Vegetables</option>
+      <option value="fruits">Fresh Fruits</option>
+      <option value="milk">Milk Products</option>
+      <option value="grains">Grains & Pulses</option>
+      <option value="spices">Organic Spices</option>
+    </select>
+  </div>
+
+  <div class="products" id="productButtons"></div>
+
+  <div class="graph-container">
+    <h2 id="productTitle">Select a product to view prices</h2>
+    <canvas id="priceChart"></canvas>
+  </div>
+
+  <script>
+    const categoryData = {
+      meatsfish: ["Boneless Chicken", "Salmon Fillet", "Beef Steak", "Fresh Prawns", "Fresh Mutton"],
+      leafyveg: ["Organic Spinach", "Kale Leaves", "Crisp Lettuce", "Fresh Coriander", "Broccoli"],
+      fruits: ["Red Apples", "Alphonso Mangoes", "Organic Bananas", "Sweet Oranges", "Seedless Grapes", "Sweet Watermelons"],
+      milk: ["Fresh Cow Milk", "Homemade Paneer", "Organic Butter", "Fresh Curd", "Desi Ghee", "Flavored Milk"],
+      grains: ["Basmati Rice", "Toor Dal", "Chickpeas", "Quinoa", "Moong Dal", "Whole Wheat"],
+      spices: ["Turmeric Powder", "Black Pepper", "Green Cardamom", "Cinnamon Sticks", "Red Chili Powder", "Cloves"]
+    };
+
+    const productPrices = {
+      "Boneless Chicken": [210, 220, 205, 215, 225],
+      "Salmon Fillet": [450, 470, 440, 460, 480],
+      "Beef Steak": [550, 530, 560, 540, 545],
+      "Fresh Prawns": [320, 310, 330, 325, 315],
+      "Fresh Mutton": [600, 620, 590, 610, 630],
+      "Organic Spinach": [40, 38, 42, 39, 41],
+      "Kale Leaves": [60, 58, 65, 63, 62],
+      "Crisp Lettuce": [55, 52, 57, 56, 54],
+      "Fresh Coriander": [15, 13, 14, 16, 12],
+      "Broccoli": [80, 78, 85, 83, 82],
+      "Red Apples": [150, 140, 145, 155, 148],
+      "Alphonso Mangoes": [200, 190, 210, 205, 195],
+      "Organic Bananas": [45, 40, 43, 44, 42],
+      "Sweet Oranges": [60, 58, 63, 61, 59],
+      "Seedless Grapes": [90, 85, 95, 92, 88],
+      "Sweet Watermelons": [120, 115, 125, 118, 122],
+      "Fresh Cow Milk": [55, 53, 56, 52, 54],
+      "Homemade Paneer": [120, 115, 125, 118, 122],
+      "Organic Butter": [200, 190, 195, 205, 198],
+      "Fresh Curd": [45, 42, 48, 47, 44],
+      "Desi Ghee": [450, 430, 440, 460, 445],
+      "Flavored Milk": [60, 58, 62, 61, 59],
+      "Basmati Rice": [90, 85, 88, 92, 87],
+      "Toor Dal": [120, 115, 118, 125, 119],
+      "Chickpeas": [70, 68, 72, 74, 71],
+      "Quinoa": [140, 135, 145, 138, 142],
+      "Moong Dal": [100, 95, 98, 102, 97],
+      "Whole Wheat": [80, 78, 82, 79, 81],
+      "Turmeric Powder": [150, 145, 155, 148, 152],
+      "Black Pepper": [220, 210, 215, 225, 218],
+      "Green Cardamom": [600, 580, 620, 610, 590],
+      "Cinnamon Sticks": [180, 170, 185, 175, 178],
+      "Red Chili Powder": [130, 125, 135, 128, 132],
+      "Cloves": [250, 240, 255, 245, 248]
+    };
+
+    const vendorNames = ["WHOLESALE WALA", "SHAAM", "PRAMOD", "BIGMARKET", "BLUKSALE"];
+    const ctx = document.getElementById("priceChart").getContext("2d");
+    let chart;
+
+    document.getElementById("category").addEventListener("change", function () {
+      const selected = this.value;
+      const productButtonsDiv = document.getElementById("productButtons");
+      productButtonsDiv.innerHTML = "";
+
+      if (categoryData[selected]) {
+        categoryData[selected].forEach(product => {
+          const btn = document.createElement("button");
+          btn.textContent = product;
+          btn.onclick = () => showGraph(product);
+          productButtonsDiv.appendChild(btn);
+        });
+      }
+    });
+
+    function showGraph(product) {
+      const prices = productPrices[product];
+      document.getElementById("productTitle").textContent = `Price Comparison for ${product}`;
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: vendorNames,
+          datasets: [{
+            label: 'Price (₹)',
+            data: prices,
+            backgroundColor: '#34d399',
+            borderColor: '#059669',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: context => `₹${context.raw}`
+              }
+            },
+            datalabels: {
+              anchor: 'end',
+              align: 'right',
+              color: '#000',
+              font: { weight: 'bold' },
+              formatter: value => `₹${value}`
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Price (₹)',
+                font: { size: 14 }
+              }
+            },
+            y: {
+              ticks: { font: { weight: 'bold' } }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    }
+  </script>
+</body>
+</html>

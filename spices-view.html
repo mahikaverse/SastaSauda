@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Spices - VendorBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md py-6 text-center">
+    <h1 class="text-3xl font-bold text-green-700">🌿 Organic Spices</h1>
+    <p class="text-gray-600 mt-1">Pure, chemical-free spices directly from trusted farmers</p>
+  </header>
+
+  <!-- SPICES GRID -->
+  <section class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 px-4">
+
+    <!-- Spice 1 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.hopkinsmedicine.org/-/media/images/health/3_-wellness/food-and-nutrition/turmeric-teaser.jpg" class="w-full h-40 object-cover rounded-lg" alt="Turmeric Powder">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Turmeric Powder</h3>
+      <p class="text-sm text-gray-600">Bright golden spice, 100% organic & anti-inflammatory.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹250 / 500g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Premium Grade</p>
+      <button onclick="openPaymentModal('Turmeric Powder', 250)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Spice 2 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://foodcare.in/cdn/shop/files/papper.png?v=1742193637" class="w-full h-40 object-cover rounded-lg" alt="Black Pepper">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Black Pepper</h3>
+      <p class="text-sm text-gray-600">Fresh whole peppercorns sourced from organic farms.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹320 / 250g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Handpicked & Sun-dried</p>
+      <button onclick="openPaymentModal('Black Pepper', 320)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Spice 3 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://vibrantliving.in/cdn/shop/files/CardamomGreen.png?v=1731059940" class="w-full h-40 object-cover rounded-lg" alt="Cardamom">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Green Cardamom</h3>
+      <p class="text-sm text-gray-600">Aromatic pods for desserts, tea & traditional dishes.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹950 / 250g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Superior Bold Grade</p>
+      <button onclick="openPaymentModal('Green Cardamom', 950)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Spice 4 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://gonefarmers.com/cdn/shop/products/image_58b7a3de-629f-4182-b3d6-b7d0dfdc1c34.jpg?v=1627721663" class="w-full h-40 object-cover rounded-lg" alt="Cinnamon Sticks">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Cinnamon Sticks</h3>
+      <p class="text-sm text-gray-600">Sweet, warm spice for baking, curries, and drinks.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹280 / 200g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Ceylon Grade</p>
+      <button onclick="openPaymentModal('Cinnamon Sticks', 280)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Spice 5 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://momsmilletsorganics.com/wp-content/uploads/2025/01/IMG_4301.jpeg" class="w-full h-40 object-cover rounded-lg" alt="Red Chili Powder">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Red Chili Powder</h3>
+      <p class="text-sm text-gray-600">Pure, vibrant spice with no added colors or chemicals.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹220 / 500g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Extra Fine Grind</p>
+      <button onclick="openPaymentModal('Red Chili Powder', 220)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Spice 6 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://m.media-amazon.com/images/I/51paguKfkKL._AC_UF1000,1000_QL80_.jpg" class="w-full h-40 object-cover rounded-lg" alt="Cloves">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Cloves</h3>
+      <p class="text-sm text-gray-600">Strongly aromatic spice, ideal for seasoning & remedies.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹450 / 250g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Premium Zanzibar Grade</p>
+      <button onclick="openPaymentModal('Cloves', 450)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+  </section>
+
+  <!-- PAYMENT MODAL -->
+  <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-80">
+      <h2 id="modalProduct" class="text-lg font-bold text-gray-800"></h2>
+      <p id="modalPrice" class="text-green-600 font-semibold mt-1"></p>
+
+      <label class="block mt-4 text-sm font-medium text-gray-700">Quantity</label>
+      <input type="number" id="modalQuantity" value="1" min="1" class="w-full border rounded p-2 mt-1">
+
+      <p id="modalTotal" class="text-gray-800 font-bold mt-2"></p>
+
+      <div class="flex justify-between mt-4">
+        <button onclick="closePaymentModal()" class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">Cancel</button>
+        <button onclick="confirmPayment()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let selectedProduct = '';
+    let selectedPrice = 0;
+
+    function openPaymentModal(productName, price) {
+      selectedProduct = productName;
+      selectedPrice = price;
+
+      document.getElementById('modalProduct').innerText = productName;
+      document.getElementById('modalPrice').innerText = `₹${price} per unit`;
+
+      const modal = document.getElementById('paymentModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const qty = parseInt(document.getElementById('modalQuantity').value) || 1;
+      document.getElementById('modalTotal').innerText = `Total: ₹${qty * selectedPrice}`;
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.add('hidden');
+    }
+
+    function confirmPayment() {
+      const qty = parseInt(document.getElementById('modalQuantity').value);
+      const total = qty * selectedPrice;
+      closePaymentModal();
+      alert(`✅ Payment Successful!\n\nProduct: ${selectedProduct}\nQuantity: ${qty}\nTotal Paid: ₹${total}`);
+    }
+
+    document.getElementById('modalQuantity').addEventListener('input', updateTotal);
+  </script>
+
+</body>
+</html>

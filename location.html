@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Vendor Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        :root {
+            --green: #10b981;
+            --light-green: #e5f8f0;
+            --gold: #fbbf24;
+            --gray: #f3f4f6;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-green);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            border: 3px solid var(--green);
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: var(--green);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            margin: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--gold);
+            color: black;
+            transform: scale(1.05);
+        }
+
+        .output {
+            margin: 10px auto;
+            max-width: 600px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .output:hover {
+            background-color: var(--gray);
+            transform: translateY(-3px);
+        }
+
+        /* Back button style */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            z-index: 999;
+        }
+
+        .back-button button {
+            background-color: #10b981;
+            color: white90;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .back-button button:hover {
+            background-color: var(--gold);
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h2 style="color: var(--green);"> Location Tracker</h2>
+    <div id="map"></div>
+    <div>
+        <button onclick="checkNearest()">Check Nearest Vendor</button>
+        <button onclick="showDistance()">Show Distance</button>
+        <button onclick="showTime()">Estimate Delivery Time</button>
+        <button onclick="highlightAllVendors()">View More Vendors</button>
+        <button onclick="resetView()">Reset</button>
+    </div>
+    <div id="output"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const shopLat = 19.204625;
+        const shopLng = 72.870150;
+
+        const vendors = [
+            { name: "VendorWallah", lat: 19.212, lng: 72.865 },
+            { name: "Parmod Vegetables", lat: 19.200, lng: 72.874 },
+            { name: "Vendorrwala", lat: 19.198, lng: 72.861 },
+            { name: "Vendingwala", lat: 19.210, lng: 72.878 },
+            { name: "Vendor E", lat: 19.206, lng: 72.890 },
+            { name: "Vendor F", lat: 19.194, lng: 72.872 },
+            { name: "Vendor G", lat: 19.220, lng: 72.860 },
+            { name: "Vendor H", lat: 19.196, lng: 72.850 },
+            { name: "Vendor I", lat: 19.190, lng: 72.880 },
+            { name: "Vendor J", lat: 19.205, lng: 72.895 }
+        ];
+
+        let map = L.map('map').setView([shopLat, shopLng], 14);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // Red icon for shopkeeper
+        const redIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        // Blue icon for vendors
+        const blueIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        // Shopkeeper marker
+        const shopMarker = L.marker([shopLat, shopLng], { icon: redIcon })
+            .addTo(map)
+            .bindPopup("Your Location")
+            .openPopup();
+
+        // Vendor markers
+        vendors.forEach(v => {
+            v.marker = L.marker([v.lat, v.lng], { icon: blueIcon })
+                .addTo(map)
+                .bindPopup(v.name);
+        });
+
+        let nearestVendor = null;
+
+        function haversine(lat1, lon1, lat2, lon2) {
+            const toRad = x => x * Math.PI / 180;
+            const R = 6371;
+            const dLat = toRad(lat2 - lat1);
+            const dLon = toRad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        function checkNearest() {
+            let minDist = Infinity;
+            vendors.forEach(v => {
+                v.distance = haversine(shopLat, shopLng, v.lat, v.lng);
+                if (v.distance < minDist) {
+                    minDist = v.distance;
+                    nearestVendor = v;
+                }
+            });
+            map.setView([nearestVendor.lat, nearestVendor.lng], 15, { animate: true });
+            L.polyline([[shopLat, shopLng], [nearestVendor.lat, nearestVendor.lng]], {
+                color: 'red',
+                weight: 4,
+                dashArray: '5, 10'
+            }).addTo(map);
+
+            document.getElementById('output').innerHTML = `
+        <div class="output">
+          📍 <strong>Nearest Vendor:</strong> ${nearestVendor.name}<br>
+          📏 <strong>Distance:</strong> ${nearestVendor.distance.toFixed(2)} km
+        </div>
+      `;
+        }
+
+        function showDistance() {
+            if (!nearestVendor) return;
+            document.getElementById('output').innerHTML += `
+        <div class="output">
+          📏 <strong>Distance to ${nearestVendor.name}:</strong> ${nearestVendor.distance.toFixed(2)} km
+        </div>
+      `;
+        }
+
+        function showTime() {
+            if (!nearestVendor) return;
+            const speed = 30; // km/h
+            const time = nearestVendor.distance / speed;
+            const minutes = Math.ceil(time * 60);
+            document.getElementById('output').innerHTML += `
+        <div class="output">
+          ⏱️ <strong>Estimated Delivery Time:</strong> ${minutes} mins
+        </div>
+      `;
+        }
+
+        function resetView() {
+            map.setView([shopLat, shopLng], 14);
+            document.getElementById('output').innerHTML = "";
+        }
+
+        function highlightAllVendors() {
+            vendors.forEach(v => {
+                v.marker.setOpacity(1);
+                v.marker.setZIndexOffset(1000);
+                v.marker.openPopup();
+            });
+
+            setTimeout(() => {
+                vendors.forEach(v => {
+                    v.marker.closePopup();
+                    v.marker.setZIndexOffset(0);
+                });
+            }, 7000); // highlight for 5 seconds
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SastaSauda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade {
+      transition: opacity 1s ease-in-out;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body class="bg-green-50 text-gray-800">
+
+  <!-- ✅ NAVBAR -->
+  <div
+    class="flex flex-col md:flex-row justify-between items-center mx-2 mt-2 px-4 py-2 md:h-[12vh] shadow text-white rounded-xl"
+    id="navbar" style="background-color: #16a34a;">
+
+    <!-- ✅ Mobile Top Row: Logo, Search, Hamburger -->
+    <div class="flex md:hidden w-full items-center gap-2">
+      <!-- Logo -->
+      <span class="font-bold text-lg sm:text-xl">🚚SastaSauda</span>
+
+      <!-- Search Bar -->
+      <div class="relative flex-1">
+        <input type="text" placeholder="🔍 Search"
+          class="w-full px-3 py-1 text-sm text-gray-800 border rounded-md focus:ring-2 focus:ring-green-300 focus:outline-none"
+          autocomplete="off">
+      </div>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="text-white text-xl focus:outline-none">
+        ☰
+      </button>
+    </div>
+
+    <!-- ✅ Desktop Content -->
+    <div class="hidden md:flex items-center justify-between w-full mt-2 md:mt-0">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-2xl md:text-4xl">🚚SastaSauda</span>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="relative w-64">
+        <input type="text" id="searchInput" placeholder="🔍 Search Here"
+          class="px-3 py-2 text-sm text-gray-800 border rounded-md w-full focus:ring-2 focus:ring-green-300 focus:outline-none"
+          autocomplete="off">
+      </div>
+
+      <!-- Menu Items -->
+      <ul class="flex items-center gap-4 text-sm font-medium">
+        <li><a href="#homepage" class="hover:text-yellow-200">Home</a></li>
+        <li><a href="product.html" class="hover:text-yellow-200">Products</a></li>
+        <li><a href="reviews.html" class="hover:text-yellow-200">Reviews</a></li>
+        <li><a href="location.html" class="hover:text-yellow-200">Nearby-Vendors</a></li>
+      </ul>
+
+      <!-- Buttons -->
+      <div class="flex gap-2">
+        <a href="loginsection.html" class="bg-white text-green-700 px-8 py-1 rounded text-sm hover:bg-green-100">Log
+          in</a>
+      </div>
+    </div>
+
+    <!-- ✅ Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="md:hidden hidden flex-col items-start gap-2 mt-2 text-sm font-medium w-full">
+      <a href="#homepage" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Home</a>
+      <a href="product.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Products</a>
+      <a href="reviews.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Reviews</a>
+      <a href="location.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Nearby-Vendors</a>
+      <a href="loginsection.html" class="block w-full px-2 py-1 bg-white text-green-700 rounded hover:bg-green-100">Log
+        in</a>
+      <a href="loginsection.html" class="block w-full px-2 py-1 bg-white text-green-700 rounded hover:bg-green-100">Sign
+        up</a>
+    </div>
+  </div>
+
+
+ <!-- ✅ HOMEPAGE -->
+<section id="homepage" class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
+  <!-- Left Text -->
+  <div class="md:w-1/2 space-y-4 text-center md:text-left">
+    <h1 class="text-3xl md:text-4xl font-bold text-green-700">
+      Fresh, Trusted & Eco-Friendly Supplies
+    </h1>
+    <p class="text-gray-600">
+      Low Cost | No Extra Fees | Trusted Vendors
+    </p>
+    <div class="mt-4 flex justify-center md:justify-start space-x-4">
+      <a class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" href="/explore.html">Explore Vendors</a>
+      <a href="#contactSection"
+        class="border border-green-600 text-green-700 px-4 py-2 rounded hover:bg-green-100">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Right Image Slider -->
+  <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
+    <div class="bg-white shadow-lg rounded-xl p-4 w-[400px] h-[280px] flex items-center justify-center overflow-hidden">
+      <img 
+        id="heroImage" 
+        src="https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg"
+        class="fade w-full h-full object-cover rounded-lg transition-opacity duration-1000 ease-in-out opacity-100" 
+        alt="SastaSauda Products">
+    </div>
+  </div>
+</section>
+
+<script>
+  const images = [
+    "https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg",
+    "https://medicaldialogues.in/h-upload/2022/09/17/750x450_185765-dairy-products.webp",
+    "https://distillique.co.za/cdn/shop/files/Untitled_design_13_1024x1024.webp",
+    "https://5.imimg.com/data5/SELLER/Default/2020/11/YU/DZ/HH/108920876/whole-spices-khade-masale.jpg",
+    "https://connect.healthkart.com/wp-content/uploads/2016/08/banner-56.jpg",
+    "https://www.kronen.eu/fileadmin/_processed_/7/5/csm_meat-fish-kronen-processing-machines_shutterstock_1920px_6ea5045a6e.jpg"
+  ];
+
+  let current = 0;
+  const heroImage = document.getElementById("heroImage");
+
+  setInterval(() => {
+    heroImage.style.opacity = "0"; // fade out
+    setTimeout(() => {
+      current = (current + 1) % images.length;
+      heroImage.src = images[current];
+      heroImage.style.opacity = "1"; // fade in
+    }, 1000); // wait for fade-out to complete
+  }, 2500);
+</script>
+
+<style>
+  /* Optional: Smooth fade transition */
+  #heroImage {
+    transition: opacity 1s ease-in-out;
+  }
+</style>
+
+  <!-- ✅ Mandi Price Board -->
+  <section class="my-8 px-4">
+    <h2 class="text-2xl font-bold mb-4 text-center text-green-700">📊 Today's Mandi Price Board</h2>
+    
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-green-500 text-center text-sm shadow rounded-lg">
+        <thead class="bg-green-100 text-green-800">
+          <tr>
+            <th class="px-2 py-2 border">Item</th>
+            <th class="px-2 py-2 border">Yesterday</th>
+            <th class="px-2 py-2 border">Today</th>
+            <th class="px-2 py-2 border">Change</th>
+            <th class="px-2 py-2 border">Freshness</th>
+          </tr>
+        </thead>
+        <tbody id="price-board-body" class="text-gray-800"></tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 text-center">
+      <button onclick="refreshPriceBoard()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all">
+        🔁 Refresh Prices
+      </button>
+    </div>
+  </section>
+
+  <script>
+    const items = ["Tomato", "Potato", "Onion", "Cauliflower", "Spinach"];
+
+    const emojiFreshness = [
+      "🌿 Super Fresh",
+      "🍃 Fresh",
+      "🌱 Average",
+      "🥀 Less Fresh"
+    ];
+
+    function getRandomPrice() {
+      return Math.floor(Math.random() * 41) + 10; // ₹10 to ₹50
+    }
+
+    function getFreshness() {
+      return emojiFreshness[Math.floor(Math.random() * emojiFreshness.length)];
+    }
+
+    let mandiData = [];
+
+    function generateMandiData() {
+      mandiData = items.map(item => {
+        const yesterday = getRandomPrice();
+        const today = getRandomPrice();
+        const freshness = getFreshness();
+        return { item, yesterday, today, freshness };
+      });
+    }
+
+    function renderPriceBoard() {
+      const tbody = document.getElementById('price-board-body');
+      tbody.innerHTML = '';
+
+      mandiData.forEach(entry => {
+        const change = entry.today - entry.yesterday;
+        const changeText = change > 0
+          ? `<span class="text-green-600 font-semibold">▲ ₹${change}</span>`
+          : change < 0
+          ? `<span class="text-red-600 font-semibold">▼ ₹${Math.abs(change)}</span>`
+          : `<span class="text-gray-500 font-semibold">—</span>`;
+
+        const row = document.createElement('tr');
+        row.classList.add('fade-in');
+
+        row.innerHTML = `
+          <td class="px-2 py-2 border">${entry.item}</td>
+          <td class="px-2 py-2 border">₹${entry.yesterday}</td>
+          <td class="px-2 py-2 border">₹${entry.today}</td>
+          <td class="px-2 py-2 border">${changeText}</td>
+          <td class="px-2 py-2 border">${entry.freshness}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function refreshPriceBoard() {
+      generateMandiData();
+      renderPriceBoard();
+    }
+
+    // Initial Load
+    refreshPriceBoard();
+  </script>
+
+  <!-- ✅ GROUP BUY SECTION -->
+  <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-8 px-4">
+    <!-- Boxes -->
+    <div
+      class="bg-white border border-green-100 rounded-xl shadow-md hover:shadow-lg transition p-5 w-full sm:w-72 text-center">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="w-7 h-7">
+        <h3 class="text-green-700 font-semibold text-lg">Join a Group Buy</h3>
+      </div>
+      <p class="text-gray-600 text-sm mb-4">Buy ingredients together in bulk to save money and reduce waste.</p>
+      <a href="groupbuy.html" target="_blank"
+        class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded text-sm">Join Now</a>
+    </div>
+    <div
+      class="bg-white border border-green-100 rounded-xl shadow-md hover:shadow-lg transition p-5 w-full sm:w-72 text-center">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" class="w-7 h-7">
+        <h3 class="text-green-700 font-semibold text-lg">Share Leftover Stock</h3>
+      </div>
+      <p class="text-gray-600 text-sm mb-4">Exchange or donate extra ingredients instead of wasting.</p>
+      <a href="leftover.html" target="_blank"
+        class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded text-sm">List Leftover</a>
+    </div>
+    <div
+      class="bg-white border border-green-100 rounded-xl shadow-md hover:shadow-lg transition p-5 w-full sm:w-72 text-center">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149684.png" class="w-7 h-7">
+        <h3 class="text-green-700 font-semibold text-lg">Compare Product Price</h3>
+      </div>
+      <p class="text-gray-600 text-sm mb-4">Compare products with other vendors to save more!</p>
+      <a href="compare.html" target="_blank"
+        class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded text-sm">Compare</a>
+    </div>
+  </div>
+
+  <!-- ✅ WHY CHOOSE US -->
+  <div class="mt-12 text-center max-w-3xl mx-auto px-4">
+    <h2 class="text-xl sm:text-2xl font-bold text-green-700">Why Choose Sustainable Sourcing?</h2>
+    <p class="text-gray-600 mt-3 text-sm sm:text-base">
+      At <span class="font-semibold text-green-700">SastaSauda</span>, we believe in creating a smarter, greener food
+      supply chain.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+      <div class="bg-green-50 rounded-xl p-4 shadow text-sm">
+        <h3 class="text-lg font-bold text-green-700">💰 30% Saved</h3>
+        <p class="text-gray-600">on group buying</p>
+      </div>
+      <div class="bg-green-50 rounded-xl p-4 shadow text-sm">
+        <h3 class="text-lg font-bold text-green-700">♻️ 2 Tons</h3>
+        <p class="text-gray-600">food waste prevented</p>
+      </div>
+      <div class="bg-green-50 rounded-xl p-4 shadow text-sm">
+        <h3 class="text-lg font-bold text-green-700">🌍 100+ Vendors</h3>
+        <p class="text-gray-600">joined the movement</p>
+      </div>
+    </div>
+    <div class="mt-6">
+      <a href="beapart.html"
+        class="bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2 rounded-lg text-sm">🚀 Be Part of the
+        Change</a>
+    </div>
+  </div>
+
+  <!-- ✅ CONTACT SECTION -->
+  <section id="contactSection" class="bg-gradient-to-b from-green-100 to-white py-12 px-4">
+    <div class="text-center mb-10">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-green-700">Get in Touch</h1>
+      <p class="text-gray-600 mt-2 text-sm sm:text-base">Need help? We’re here for you!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <!-- Cards -->
+      <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
+        <div
+          class="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl">📧
+        </div>
+        <h3 class="font-semibold mt-4">Email Us</h3>
+        <p class="text-sm text-gray-600 mt-1">sastasauda86@gmail.com</p>
+        <p class="text-xs text-gray-500 mt-2">For queries/partnerships</p>
+      </div>
+      <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
+        <div
+          class="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl">📍
+        </div>
+        <h3 class="font-semibold mt-4">Visit Us</h3>
+        <p class="text-sm text-gray-600 mt-1">Thakur College, Kandivali East</p>
+        <p class="text-xs text-gray-500 mt-2">Mumbai, India</p>
+      </div>
+      <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
+        <div
+          class="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl">📞
+        </div>
+        <h3 class="font-semibold mt-4">Call Us</h3>
+        <p class="text-sm text-gray-600 mt-1">+91 8169570024</p>
+        <p class="text-xs text-gray-500 mt-2">Mon - Fri (9 AM - 6 PM)</p>
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1 text-center md:text-left">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Why Contact SastaSauda?</h2>
+        <p class="text-gray-600 mt-3 text-sm">Whether you’re a vendor looking for eco-conscious buyers, or a supplier wanting reliable vendor partnerships, VendorBuddy is your trusted platform for sustainable business.</p>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Contact Illustration"
+          class="w-48 sm:w-64">
+      </div>
+    </div>
+
+    <div class="mt-10 text-center text-xs text-gray-500">
+      Created By <span class="text-green-700 font-medium">Mahika, Anand, Gaurav, Archit</span>. <br>
+      Let’s build a <span class="text-green-700 font-medium">greener vendor network</span>.
+    </div>
+  </section>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

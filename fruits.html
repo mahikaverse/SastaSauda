@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Fruits - VendorBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md py-6 text-center">
+    <h1 class="text-3xl font-bold text-green-700">🍎 Fresh Fruits</h1>
+    <p class="text-gray-600 mt-1">Seasonal, organic, and farm-fresh fruits for your needs</p>
+  </header>
+
+  <!-- FRUITS GRID -->
+  <section class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 px-4">
+
+    <!-- Fruit 1 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_5" class="w-full h-40 object-cover rounded-lg" alt="Apple">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Red Apples</h3>
+      <p class="text-sm text-gray-600">Crisp, juicy, and naturally sweet apples from organic orchards.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹180 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Premium Handpicked</p>
+      <button onclick="openPaymentModal('Red Apples', 180)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Fruit 2 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl-w5v4Ius41ByjkeoTpnjP9eb6J9EO2gueA&s" class="w-full h-40 object-cover rounded-lg" alt="Mango">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Alphonso Mangoes</h3>
+      <p class="text-sm text-gray-600">Sweet, fragrant mangoes, perfect for desserts & juices.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹350 / dozen</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Export Grade</p>
+      <button onclick="openPaymentModal('Alphonso Mangoes', 350)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Fruit 3 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.rainforest-alliance.org/wp-content/uploads/2021/06/bananas-1-e1624909301641.jpg.optimal.jpg" class="w-full h-40 object-cover rounded-lg" alt="Bananas">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Organic Bananas</h3>
+      <p class="text-sm text-gray-600">Naturally ripened bananas rich in nutrients and fiber.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹50 / dozen</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Farm Fresh</p>
+      <button onclick="openPaymentModal('Organic Bananas', 50)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Fruit 4 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.health.com/thmb/OZgW2YQtFb9qJ3PbySNei3YdgPw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-Stocksy_txp5e95690asrw300_Medium_934585-e870449543284eed8aa4be52fc09a4ed.jpg" class="w-full h-40 object-cover rounded-lg" alt="Oranges">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Sweet Oranges</h3>
+      <p class="text-sm text-gray-600">Juicy and vitamin-rich oranges for fresh juice lovers.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹120 / dozen</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Naturally Grown</p>
+      <button onclick="openPaymentModal('Sweet Oranges', 120)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Fruit 5 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://img.freepik.com/premium-photo/bunch-fresh-green-black-grapes-texture-delicious-sweet-juicy-bright-fruit-with-vitamins_79727-246.jpg" class="w-full h-40 object-cover rounded-lg" alt="Grapes">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Seedless Grapes</h3>
+      <p class="text-sm text-gray-600">Fresh, juicy green & black grapes with natural sweetness.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹160 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Handpicked</p>
+      <button onclick="openPaymentModal('Seedless Grapes', 160)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+    <!-- Fruit 6 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.bhg.com/thmb/FrHFAfLFfZxEm_QipVJver7KNl4=/4000x0/filters:no_upscale():strip_icc()/BHG-watermelon-group-shot-1-18d96419784749d39dbf272653de91bd.jpg" class="w-full h-40 object-cover rounded-lg" alt="Watermelon">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Sweet Watermelons</h3>
+      <p class="text-sm text-gray-600">Refreshing summer fruit, perfect for hydration.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹30 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Juicy & Fresh</p>
+      <button onclick="openPaymentModal('Sweet Watermelons', 30)" class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Buy Now</button>
+    </div>
+
+  </section>
+
+  <!-- PAYMENT MODAL -->
+  <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-80">
+      <h2 id="modalProduct" class="text-lg font-bold text-gray-800"></h2>
+      <p id="modalPrice" class="text-green-600 font-semibold mt-1"></p>
+
+      <label class="block mt-4 text-sm font-medium text-gray-700">Quantity</label>
+      <input type="number" id="modalQuantity" value="1" min="1" class="w-full border rounded p-2 mt-1">
+
+      <p id="modalTotal" class="text-gray-800 font-bold mt-2"></p>
+
+      <div class="flex justify-between mt-4">
+        <button onclick="closePaymentModal()" class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">Cancel</button>
+        <button onclick="confirmPayment()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let selectedProduct = '';
+    let selectedPrice = 0;
+
+    function openPaymentModal(productName, price) {
+      selectedProduct = productName;
+      selectedPrice = price;
+
+      document.getElementById('modalProduct').innerText = productName;
+      document.getElementById('modalPrice').innerText = `₹${price} per unit`;
+
+      const qtyInput = document.getElementById('modalQuantity');
+      qtyInput.value = 1; // reset quantity
+      qtyInput.oninput = updateTotal; // attach listener dynamically
+
+      const modal = document.getElementById('paymentModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const qty = parseInt(document.getElementById('modalQuantity').value) || 1;
+      document.getElementById('modalTotal').innerText = `Total: ₹${qty * selectedPrice}`;
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.add('hidden');
+    }
+
+    function confirmPayment() {
+      const qty = parseInt(document.getElementById('modalQuantity').value);
+      const total = qty * selectedPrice;
+      closePaymentModal();
+      alert(`✅ Payment Successful!\n\nProduct: ${selectedProduct}\nQuantity: ${qty}\nTotal Paid: ₹${total}`);
+    }
+  </script>
+
+</body>
+</html>

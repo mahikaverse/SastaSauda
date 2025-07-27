@@ -1,0 +1,457 @@
+  <!DOCTYPE html> 
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ratings & Reviews</title>
+    <style>
+        :root {
+            --green: #10b981;
+            --light-green: #e5f8f0;
+            --gold: #fbbf24;
+            --gray: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f1f8f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .back-button {
+            margin-bottom: 10px;
+        }
+
+        .back-button button {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .ratings-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rating-bars {
+            margin-top: 20px;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .bar span {
+            width: 40px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .progress {
+            flex: 1;
+            background: var(--gray);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .fill {
+            background: var(--green);
+            height: 100%;
+        }
+
+        .percent {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .filter-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-buttons button {
+            border: 1px solid var(--green);
+            background: var(--light-green);
+            color: var(--green);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .filter-buttons button.active {
+            background: var(--green);
+            color: white;
+        }
+
+        .supplier {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 12px 0;
+            background: #f9fdfc;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .supplier:hover {
+            background-color: #e5f8f0;
+        }
+
+        .supplier img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .supplier-details {
+            flex: 1;
+        }
+
+        .supplier-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .supplier-stars {
+            color: var(--gold);
+        }
+
+        .review {
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .avatar {
+            background: var(--green);
+            color: white;
+            font-weight: bold;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        .review-content {
+            flex: 1;
+        }
+
+        .review-content .name {
+            font-weight: bold;
+        }
+
+        .review-content .date {
+            font-size: 13px;
+            color: gray;
+        }
+
+        .review-content .stars {
+            color: var(--gold);
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .heading {
+                flex-direction: column;
+            }
+
+            .score {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+         
+        <div class="heading">
+            <div>
+                <h1>Our Platform Reviews and Ratings</h1>
+                <div class="ratings-block">
+                    <div class="score">4.1</div>
+                    <div>
+                        <div class="stars">★ ★ ★ ★ ☆</div>
+                        <div>20K Ratings</div>
+                    </div>
+                </div>
+            </div>
+            <div style="color: gray; font-weight: bold;">Updated 26 Jul, 2025</div>
+        </div>
+
+        <div class="rating-bars">
+            <div class="bar"><span>5★</span>
+                <div class="progress">
+                    <div class="fill" style="width:55%;"></div>
+                </div><span class="percent">55%</span>
+            </div>
+            <div class="bar"><span>4★</span>
+                <div class="progress">
+                    <div class="fill" style="width:24%;"></div>
+                </div><span class="percent">24%</span>
+            </div>
+            <div class="bar"><span>3★</span>
+                <div class="progress">
+                    <div class="fill" style="width:10%;"></div>
+                </div><span class="percent">10%</span>
+            </div>
+            <div class="bar"><span>2★</span>
+                <div class="progress">
+                    <div class="fill" style="width:4%;"></div>
+                </div><span class="percent">4%</span>
+            </div>
+            <div class="bar"><span>1★</span>
+                <div class="progress">
+                    <div class="fill" style="width:8%;"></div>
+                </div><span class="percent">8%</span>
+            </div>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="active" onclick="loadSuppliers('vegetable', this)">Vegetable Vendors</button>
+            <button onclick="loadSuppliers('dairy', this)">Dairy Product Vendors</button>
+            <button onclick="loadSuppliers('raw', this)">Raw Material Vendors</button>
+            <button onclick="loadSuppliers('groceries', this)">Groceries Vendors</button>
+            <button onclick="loadSuppliers('fish', this)">Fish Vendors</button>
+        </div>
+
+        <div id="supplier-section"></div>
+    </div>
+
+    <script>
+        const suppliers = {
+            vegetable: [
+                {
+                    name: "PRAMOD VEGETABLES",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.5,
+                    reviews: [
+                        { name: "Maahika ", stars: 5, date: "Jul 20, 2025", text: "Fresh bhaji dete hai yeh toh!" },
+                        { name: "Anand", stars: 4, date: "Jul 18, 2025", text: "Freshness mast hai iska " }
+                    ]
+                },
+                {
+                    name: "GANESH VEGIES",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.0,
+                    reviews: [
+                        { name: "Gaurav", stars: 4, date: "Jul 19, 2025", text: "Low cost mai best" },
+                        { name: "Archit", stars: 1, date: "Jul 17, 2025", text: "bhai meko late delivery kiya isne" }
+                    ]
+                },
+                {
+                    name: "SURESH MANDI",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 3.5,
+                    reviews: [
+                        { name: "Rahul thelewala", stars: 3, date: "Jul 17, 2025", text: "Quality is good" },
+                        { name: "Emiway", stars: 4, date: "Jul 16, 2025", text: "Freshness aacha nahi laga" }
+                    ]
+                }
+            ],
+            dairy: [
+                {
+                    name: "Taaza Dudh",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.7,
+                    reviews: [
+                        { name: "Anita Desai", stars: 5, date: "Jul 22, 2025", text: "Paneer was soft and fresh." },
+                        { name: "Rahul D", stars: 4, date: "Jul 20, 2025", text: "Milk taste is excellent." }
+                    ]
+                },
+                {
+                    name: "Anand Milk centre",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.2,
+                    reviews: [
+                        { name: "Manish G", stars: 4, date: "Jul 19, 2025", text: "Reasonable pricing." },
+                        { name: "Sneha T", stars: 5, date: "Jul 17, 2025", text: "Loved their flavored milk." }
+                    ]
+                },
+                {
+                    name: "Archit Diary",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.6,
+                    reviews: [
+                        { name: "Leela Rao", stars: 5, date: "Jul 21, 2025", text: "Curd was thick and tasty." },
+                        { name: "Akshay N", stars: 4, date: "Jul 20, 2025", text: "Delivery was fast." }
+                    ]
+                }
+            ],
+            raw: [
+                {
+                    name: "Gaurav Suppilies",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.3,
+                    reviews: [
+                        { name: "Sohail Khan", stars: 5, date: "Jul 21, 2025", text: "Top-notch raw pulses!" },
+                        { name: "Nikki Joshi", stars: 4, date: "Jul 20, 2025", text: "Delivered on time." }
+                    ]
+                },
+                {
+                    name: "SUNRISE WHOLESALE",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 3.9,
+                    reviews: [
+                        { name: "Deepak L", stars: 4, date: "Jul 18, 2025", text: "Good quantity but packaging could be better." }
+                    ]
+                }
+            ],
+            groceries: [
+                {
+                    name: "EVERYDAY GROCERY",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 4.4,
+                    reviews: [
+                        { name: "Rima Shah", stars: 5, date: "Jul 21, 2025", text: "Excellent rice and flour quality." },
+                        { name: "Mohit V", stars: 4, date: "Jul 20, 2025", text: "Affordable and well-stocked." }
+                    ]
+                },
+                {
+                    name: "Maahika Groceries",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 3.8,
+                    reviews: [
+                        { name: "Diksha Nair", stars: 4, date: "Jul 19, 2025", text: "Got all kitchen basics in one go!" }
+                    ]
+                }, {
+                    name: "Ramesh Vendorwala",
+                    image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                    rating: 3.8,
+                    reviews: [
+                        { name: "Disha patani", stars: 4, date: "Jul 19, 2025", text: "Thankyouuuu!" }
+                    ]
+                }
+            ],
+            fish: [{
+                name: "Archit Fishyy Centre",
+                image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                rating: 3.8,
+                reviews: [
+                    { name: "Diksha", stars: 1, date: "Jul 19, 2025", text: "Fish are not fresh" }, { name: "Raghav", stars: 5, date: "Jul 19, 2025", text: "Nice fishes" }
+                ]
+            },
+            {
+                name: "SEA FRESH",
+                image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                rating: 4.8,
+                reviews: [
+                    { name: "Arjun R", stars: 5, date: "Jul 22, 2025", text: "Super fresh prawns!" },
+                    { name: "Sana K", stars: 5, date: "Jul 21, 2025", text: "No smell, very clean!" }
+                ]
+            },
+            {
+                name: "Fishyy centre",
+                image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+                rating: 4.1,
+                reviews: [
+                    { name: "Hari O", stars: 4, date: "Jul 20, 2025", text: "Fish was fresh, but delivery was slow." }
+                ]
+            }
+            ]
+        };
+
+        function loadSuppliers(category, btn) {
+            document.querySelectorAll('.filter-buttons button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const section = document.getElementById('supplier-section');
+            section.innerHTML = '';
+
+            suppliers[category].forEach((supplier, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'supplier';
+                wrapper.innerHTML = `
+                    <img src="${supplier.image}" alt="Profile" />
+                    <div class="supplier-details">
+                        <div class="supplier-name">${supplier.name}</div>
+                        <div class="supplier-stars">★ ${supplier.rating}</div>
+                        <div id="review-${category}-${index}" class="hidden"></div>
+                    </div>
+                `;
+                wrapper.onclick = () => toggleReviews(`review-${category}-${index}`, supplier.reviews);
+                section.appendChild(wrapper);
+            });
+        }
+
+        function toggleReviews(divId, reviews) {
+            const container = document.getElementById(divId);
+            if (!container.classList.contains('hidden')) {
+                container.classList.add('hidden');
+                container.innerHTML = '';
+                return;
+            }
+
+            container.classList.remove('hidden');
+            container.innerHTML = reviews.map(r => `
+                <div class="review">
+                    <div class="avatar">${r.name.charAt(0)}</div>
+                    <div class="review-content">
+                        <div class="name">${r.name}</div>
+                        <div class="date">${r.date}</div>
+                        <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+                        <p>${r.text}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = () => loadSuppliers('vegetable', document.querySelector('.filter-buttons button'));
+    </script>
+</body>
+
+</html>

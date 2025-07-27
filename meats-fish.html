@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meats & Fish - VendorBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md py-6 text-center">
+    <h1 class="text-3xl font-bold text-green-700">🥩 Meats & Fish</h1>
+    <p class="text-gray-600 mt-1">Fresh, hygienic, and ethically sourced meats & seafood</p>
+  </header>
+
+  <!-- PRODUCT GRID -->
+  <section class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 px-4">
+
+    <!-- Product 1 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://assets.tendercuts.in/product/C/H/594e4559-f6b7-417d-9aac-d0643b5711d3.jpg" class="w-full h-40 object-cover rounded-lg" alt="Boneless Chicken">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Boneless Chicken</h3>
+      <p class="text-sm text-gray-600">Fresh, antibiotic-free chicken for healthy meals.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹450 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Farm Fresh</p>
+      <button onclick="openPaymentModal('Boneless Chicken', 450)" 
+              class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
+        Buy Now
+      </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://freshtogo.in/product_image/1734795696Atlantic%20Salmon%20-%20Fillet.webp" class="w-full h-40 object-cover rounded-lg" alt="Salmon Fish">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Salmon Fillet</h3>
+      <p class="text-sm text-gray-600">Premium Atlantic salmon rich in Omega-3.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹1200 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Wild-Caught</p>
+      <button onclick="openPaymentModal('Salmon Fillet', 1200)" 
+              class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
+        Buy Now
+      </button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.shutterstock.com/image-photo/raw-beef-steak-rosemary-peppercorns-260nw-2292399619.jpg" class="w-full h-40 object-cover rounded-lg" alt="Beef Steak">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Beef Steak</h3>
+      <p class="text-sm text-gray-600">Tender, grass-fed beef for juicy steaks & grills.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹900 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Prime Cut</p>
+      <button onclick="openPaymentModal('Beef Steak', 900)" 
+              class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
+        Buy Now
+      </button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://bombayfreshfish.com/wp-content/uploads/2022/09/Pink-prawns1-LR.jpg" class="w-full h-40 object-cover rounded-lg" alt="Fresh Prawns">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Fresh Prawns</h3>
+      <p class="text-sm text-gray-600">Juicy prawns perfect for curries & grills.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹750 / 500g</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Sea Fresh</p>
+      <button onclick="openPaymentModal('Fresh Prawns', 750)" 
+              class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
+        Buy Now
+      </button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="bg-white shadow-md rounded-xl p-5 hover:shadow-lg transition">
+      <img src="https://www.freshtohome.com/blog/wp-content/uploads/2024/08/goat-curry-cut.jpg" class="w-full h-40 object-cover rounded-lg" alt="Mutton">
+      <h3 class="mt-3 text-lg font-semibold text-gray-800">Fresh Mutton</h3>
+      <p class="text-sm text-gray-600">Tender goat meat for curries & biryanis.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-green-700 font-bold">₹850 / kg</span>
+        <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Quality: Halal-Certified</p>
+      <button onclick="openPaymentModal('Fresh Mutton', 850)" 
+              class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
+        Buy Now
+      </button>
+    </div>
+
+  </section>
+
+  <!-- PAYMENT MODAL (COMMON) -->
+  <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-80">
+      <h2 id="modalProduct" class="text-lg font-bold text-gray-800"></h2>
+      <p id="modalPrice" class="text-green-600 font-semibold mt-1"></p>
+
+      <label class="block mt-4 text-sm font-medium text-gray-700">Quantity</label>
+      <input type="number" id="modalQuantity" value="1" min="1" class="w-full border rounded p-2 mt-1">
+
+      <p id="modalTotal" class="text-gray-800 font-bold mt-2"></p>
+
+      <div class="flex justify-between mt-4">
+        <button onclick="closePaymentModal()" class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button onclick="confirmPayment()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+          Pay Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let selectedProduct = '';
+    let selectedPrice = 0;
+
+    function openPaymentModal(productName, price) {
+      selectedProduct = productName;
+      selectedPrice = price;
+
+      document.getElementById('modalProduct').innerText = productName;
+      document.getElementById('modalPrice').innerText = `₹${price} per unit`;
+
+      const modal = document.getElementById('paymentModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const qty = parseInt(document.getElementById('modalQuantity').value) || 1;
+      document.getElementById('modalTotal').innerText = `Total: ₹${qty * selectedPrice}`;
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.add('hidden');
+    }
+
+    function confirmPayment() {
+      const qty = parseInt(document.getElementById('modalQuantity').value);
+      const total = qty * selectedPrice;
+
+      closePaymentModal();
+
+      alert(`✅ Payment Successful!\n\nProduct: ${selectedProduct}\nQuantity: ${qty}\nTotal Paid: ₹${total}`);
+    }
+
+    document.getElementById('modalQuantity').addEventListener('input', updateTotal);
+  </script>
+
+</body>
+</html>

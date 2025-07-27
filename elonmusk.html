@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendor Profile</title>
+    <style>
+        :root {
+            --green: #10b981;
+            --light-green: #e5f8f0;
+            --gold: #fbbf24;
+            --gray: #e0e0e0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f7f7f7;
+            margin-top: 40px;
+        }
+
+        .back-button {
+            margin: 20px;
+            display: inline-block;
+            background-color: var(--green);
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0e9e6e;
+            transform: scale(1.05);
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header {
+            text-align: center;
+        }
+
+        .profile-header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s;
+        }
+
+        .profile-header img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-section {
+            margin-top: 30px;
+        }
+
+        .info-section h3 {
+            margin-bottom: 10px;
+            color: var(--green);
+            transition: color 0.3s;
+        }
+
+        .info-section h3:hover {
+            color: #0e9e6e;
+        }
+
+        .info-section p {
+            margin: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .info-section p:hover {
+            color: #444;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.good {
+            color: green;
+        }
+
+        .status.bad {
+            color: red;
+        }
+
+        .bar-graph {
+            margin-top: 10px;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .bar:hover {
+            transform: scale(1.02);
+        }
+
+        .bar span {
+            width: 60px;
+            font-size: 14px;
+        }
+
+        .progress {
+            height: 12px;
+            background-color: var(--gray);
+            flex: 1;
+            margin: 0 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background-color: var(--gold);
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+
+        .count {
+            font-size: 14px;
+            width: 30px;
+            text-align: right;
+        }
+
+        .review {
+            border-top: 1px solid #ccc;
+            margin-top: 15px;
+            padding-top: 10px;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: fadeSlide 0.6s ease-out forwards;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .review:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .review:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .review:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .review:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        li:hover {
+            transform: translateX(4px);
+
+            color: var(--green);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="profile-container" id="profileContainer">
+        <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <script>
+        const vendor = {
+            name: "Elon Musk Milk Centre",
+            category: "Diary Vendor",
+            image: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+            ordersDelivered: 169,
+            complaints: true,
+            labCertificate: true,
+            overallRating: 3.5,
+            ratingBreakdown: {
+                5: 12,
+                4: 5,
+                3: 2,
+                2: 1,
+                1: 1
+            },
+            reviews: [
+                { name: "Mahika Chaurasiya", stars: 1, comment: "Bad quality" },
+                { name: "Anand Dangi", stars: 4, comment: "Best quality" },
+                { name: "Archit Das", stars: 5, comment: "I loved it " }, { name: "Gaurav Agarwal", stars: 5, comment: "Niceee" }
+            ],
+            deliveries: [
+                "20 July 2025 - Delivered 10kg Tomatoes",
+                "18 July 2025 - Delivered 5kg Onions",
+                "15 July 2025 - Delivered Mixed Vegetables"
+            ]
+        };
+
+        const container = document.getElementById("profileContainer");
+
+        function createBarGraph(ratings) {
+            const total = Object.values(ratings).reduce((a, b) => a + b, 0);
+            return Object.entries(ratings).reverse().map(([stars, count], index) => {
+                const percentage = ((count / total) * 100).toFixed(1);
+                return `
+          <div class="bar">
+            <span>${stars} ★</span>
+            <div class="progress"><div class="fill" style="width: ${percentage}%"></div></div>
+            <div class="count">${count}</div>
+          </div>
+        `;
+            }).join("");
+        }
+
+        function renderProfile(vendor) {
+            container.innerHTML = `
+        <div class="profile-header">
+          <img src="${vendor.image}" alt="${vendor.name}" />
+          <h2>${vendor.name}</h2>
+          <p><strong>Category:</strong> ${vendor.category}</p>
+        </div>
+
+        <div class="info-section">
+          <h3>Vendor Details</h3>
+          <p>📦 Orders Delivered: <span class="status good">${vendor.ordersDelivered}</span></p>
+          <p>❗ Complaints: <span class="status ${vendor.complaints ? "bad" : "good"}">${vendor.complaints ? "Yes" : "No"}</span></p>
+          <p>📄 Lab Certificate: <span class="status ${vendor.labCertificate ? "good" : "bad"}">${vendor.labCertificate ? "Uploaded" : "Not Uploaded"}</span></p>
+        </div>
+
+        <div class="info-section">
+          <h3>Rating & Review Summary</h3>
+          <p><strong>Overall Rating:</strong> ⭐ ${vendor.overallRating}/5</p>
+          <div class="bar-graph">
+            ${createBarGraph(vendor.ratingBreakdown)}
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>User Feedback</h3>
+          ${vendor.reviews.map((review, i) => `
+            <div class="review" style="animation-delay: ${i * 0.2}s;">
+              <p><strong>${review.name}</strong> - ${'★'.repeat(review.stars)}${'☆'.repeat(5 - review.stars)}</p>
+              <p>${review.comment}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="info-section">
+          <h3>Past Delivery Records</h3>
+          <ul>
+            ${vendor.deliveries.map(d => `<li>🔸 ${d}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+        }
+
+        renderProfile(vendor);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚚 SastaSauda - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
+
+  <!-- ✅ LOGIN CARD -->
+  <section class="bg-white shadow-lg rounded-xl p-6 w-full max-w-md text-center">
+    <h1 class="text-3xl font-bold text-green-600">🚚 SastaSauda</h1>
+    <p class="text-gray-500 mb-6">Login to access your userprofile</p>
+
+    <!-- Email -->
+    <div class="text-left mb-4">
+      <label class="text-sm font-medium text-gray-700">
+        Email Address <span class="text-red-500">*</span>
+      </label>
+      <input id="emailInput" type="email" placeholder="Enter your email"
+        class="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+    </div>
+
+    <!-- Password -->
+    <div class="text-left mb-4 relative">
+      <label class="text-sm font-medium text-gray-700">
+        Password <span class="text-red-500">*</span>
+      </label>
+      <input id="passwordInput" type="password" placeholder="Enter your password"
+        class="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+      <span id="togglePassword" class="absolute right-3 top-9 text-gray-500 cursor-pointer">👁</span>
+    </div>
+
+    <!-- Login Button -->
+    <button id="loginBtn"
+      class="w-full py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition">
+      Log In
+    </button>
+
+    <!-- Divider -->
+    <div class="flex items-center my-4">
+      <hr class="flex-1 border-gray-300">
+      <span class="mx-2 text-gray-400 text-sm">or</span>
+      <hr class="flex-1 border-gray-300">
+    </div>
+
+    <!-- Social Logins -->
+    <button id="googleLogin"
+      class="w-full mb-2 py-2 border flex items-center justify-center space-x-2 rounded-lg hover:bg-gray-50 transition">
+      🔍 <span>Continue with Google</span>
+    </button>
+
+    <!-- Sign Up -->
+    <p class="mt-4 text-sm text-gray-600">
+      Don’t have an account?
+      <button id="openSignup" class="text-green-600 font-semibold hover:underline">Sign Up</button>
+    </p>
+  </section>
+
+  <!-- ✅ Sign Up Modal -->
+  <div id="signupModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white p-6 rounded shadow-lg w-96 text-center">
+      <h3 class="text-lg font-bold mb-2">Create Your Account</h3>
+
+      <div class="text-left mb-3">
+        <label class="text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
+        <input id="signupName" type="text" placeholder="Enter your name"
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+      </div>
+
+      <div class="text-left mb-3">
+        <label class="text-sm font-medium text-gray-700">Email Address <span class="text-red-500">*</span></label>
+        <input id="signupEmail" type="email" placeholder="Enter your email"
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+      </div>
+
+      <div class="text-left mb-3">
+        <label class="text-sm font-medium text-gray-700">Password <span class="text-red-500">*</span></label>
+        <input id="signupPassword" type="password" placeholder="Create a password"
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+      </div>
+
+      <button id="signupSubmit"
+        class="bg-green-500 text-white px-4 py-2 rounded w-full hover:bg-green-600 transition">Sign Up</button>
+      <button id="closeSignup" class="mt-2 text-gray-500 hover:underline text-sm">Cancel</button>
+    </div>
+  </div>
+
+    <div id="toast-success"
+       class="hidden fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded shadow-lg z-50 transition-opacity duration-300">
+    ✅ Account created successfully!
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById("loginBtn");
+    const googleLogin = document.getElementById("googleLogin");
+    const openSignup = document.getElementById("openSignup");
+    const signupModal = document.getElementById("signupModal");
+    const closeSignup = document.getElementById("closeSignup");
+    const signupSubmit = document.getElementById("signupSubmit");
+
+    const emailInput = document.getElementById("emailInput");
+    const passwordInput = document.getElementById("passwordInput");
+    const signupName = document.getElementById("signupName");
+    const signupEmail = document.getElementById("signupEmail");
+    const signupPassword = document.getElementById("signupPassword");
+
+    // ✅ Show/Hide Signup Modal
+    openSignup.addEventListener("click", () => signupModal.classList.remove("hidden"));
+    closeSignup?.addEventListener("click", () => signupModal.classList.add("hidden"));
+
+    // ✅ Normal Login
+    loginBtn.addEventListener("click", () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        alert("⚠ Please fill all mandatory fields!");
+        return;
+      }
+
+      // Save dummy user name if login
+      localStorage.setItem("vendorName", email.split("@")[0]); // just use email prefix as name
+      window.location.href = "afterlogin.html";
+    });
+
+    // ✅ Google Login Simulation
+    googleLogin.addEventListener("click", () => {
+      localStorage.setItem("vendorName", "Google User");
+      window.location.href = "afterlogin.html";
+    });
+
+    // ✅ Signup
+    signupSubmit.addEventListener("click", () => {
+      const name = signupName.value.trim();
+      const email = signupEmail.value.trim();
+      const pass = signupPassword.value.trim();
+
+      if (!name || !email || !pass) {
+        alert("⚠ Please fill all mandatory fields!");
+        return;
+      }
+
+      // Save username in localStorage
+      localStorage.setItem("vendorName", name);
+
+      alert("✅ Account created successfully!");
+      signupModal.classList.add("hidden");
+
+      // Redirect to userprofile
+      window.location.href = "afterlogin.html";
+    });
+
+
+
+
+     
+    function createAccount() {
+      // Hide modal
+      const signupModal = document.getElementById("signupModal");
+      signupModal.classList.add("hidden");
+
+      // Show toast
+      const toast = document.getElementById("toast-success");
+      toast.classList.remove("hidden");
+
+      // Auto-hide toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3000);
+    }
+
+  </script>
+</body>
+
+</html>
