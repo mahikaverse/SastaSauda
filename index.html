@@ -63,6 +63,7 @@
       <!-- Menu Items -->
       <ul class="flex items-center gap-4 text-sm font-medium">
         <li><a href="#homepage" class="hover:text-yellow-200">Home</a></li>
+        <li><a href="#mandikaprice" class="hover:text-yellow-200">Mandi Price - Nearby</a></li>
         <li><a href="product.html" class="hover:text-yellow-200">Products</a></li>
         <li><a href="reviews.html" class="hover:text-yellow-200">Reviews</a></li>
         <li><a href="location.html" class="hover:text-yellow-200">Nearby-Vendors</a></li>
@@ -78,6 +79,7 @@
     <!-- ✅ Mobile Dropdown Menu -->
     <div id="mobileMenu" class="md:hidden hidden flex-col items-start gap-2 mt-2 text-sm font-medium w-full">
       <a href="#homepage" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Home</a>
+      <a href="#mandikaprice" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Mandi Price </a>
       <a href="product.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Products</a>
       <a href="reviews.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Reviews</a>
       <a href="location.html" class="block w-full px-2 py-1 hover:bg-green-700 rounded">Nearby-Vendors</a>
@@ -89,89 +91,274 @@
   </div>
 
 
- <!-- ✅ HOMEPAGE -->
-<section id="homepage" class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
-  <!-- Left Text -->
-  <div class="md:w-1/2 space-y-4 text-center md:text-left">
-    <h1 class="text-3xl md:text-4xl font-bold text-green-700">
-      Fresh, Trusted & Eco-Friendly Supplies
-    </h1>
-    <p class="text-gray-600">
-      Low Cost | No Extra Fees | Trusted Vendors
-    </p>
-    <div class="mt-4 flex justify-center md:justify-start space-x-4">
-      <a class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" href="/explore.html">Explore Vendors</a>
-      <a href="#contactSection"
-        class="border border-green-600 text-green-700 px-4 py-2 rounded hover:bg-green-100">Contact Us</a>
-    </div>
-  </div>
-
-  <!-- Right Image Slider -->
-  <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
-    <div class="bg-white shadow-lg rounded-xl p-4 w-[400px] h-[280px] flex items-center justify-center overflow-hidden">
-      <img 
-        id="heroImage" 
-        src="https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg"
-        class="fade w-full h-full object-cover rounded-lg transition-opacity duration-1000 ease-in-out opacity-100" 
-        alt="SastaSauda Products">
-    </div>
-  </div>
-</section>
-
-<script>
-  const images = [
-    "https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg",
-    "https://medicaldialogues.in/h-upload/2022/09/17/750x450_185765-dairy-products.webp",
-    "https://distillique.co.za/cdn/shop/files/Untitled_design_13_1024x1024.webp",
-    "https://5.imimg.com/data5/SELLER/Default/2020/11/YU/DZ/HH/108920876/whole-spices-khade-masale.jpg",
-    "https://connect.healthkart.com/wp-content/uploads/2016/08/banner-56.jpg",
-    "https://www.kronen.eu/fileadmin/_processed_/7/5/csm_meat-fish-kronen-processing-machines_shutterstock_1920px_6ea5045a6e.jpg"
-  ];
-
-  let current = 0;
-  const heroImage = document.getElementById("heroImage");
-
-  setInterval(() => {
-    heroImage.style.opacity = "0"; // fade out
-    setTimeout(() => {
-      current = (current + 1) % images.length;
-      heroImage.src = images[current];
-      heroImage.style.opacity = "1"; // fade in
-    }, 1000); // wait for fade-out to complete
-  }, 2500);
-</script>
-
-<style>
-  /* Optional: Smooth fade transition */
-  #heroImage {
-    transition: opacity 1s ease-in-out;
-  }
-</style>
-
-  <!-- ✅ Mandi Price Board -->
-  <section class="my-8 px-4">
-    <h2 class="text-2xl font-bold mb-4 text-center text-green-700">📊 Today's Mandi Price Board</h2>
-    
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-green-500 text-center text-sm shadow rounded-lg">
-        <thead class="bg-green-100 text-green-800">
-          <tr>
-            <th class="px-2 py-2 border">Item</th>
-            <th class="px-2 py-2 border">Yesterday</th>
-            <th class="px-2 py-2 border">Today</th>
-            <th class="px-2 py-2 border">Change</th>
-            <th class="px-2 py-2 border">Freshness</th>
-          </tr>
-        </thead>
-        <tbody id="price-board-body" class="text-gray-800"></tbody>
-      </table>
+  <!-- ✅ HOMEPAGE -->
+  <section id="homepage" class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between p-6 md:p-12">
+    <!-- Left Text -->
+    <div class="md:w-1/2 space-y-4 text-center md:text-left">
+      <h1 class="text-3xl md:text-4xl font-bold text-green-700">
+        Fresh, Trusted & Affordable
+        <span class="text-green-500">Market Prices</span>
+      </h1>
+      <p class="text-gray-600"> 
+        Low Cost | Mandi Prices | UserFriendly | Nearby Vendors
+      </p>
+      <div class="mt-4 flex justify-center md:justify-start space-x-4">
+        <a class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" href="/explore.html">Explore Vendors</a>
+        <a href="#contactSection"
+          class="border border-green-600 text-green-700 px-4 py-2 rounded hover:bg-green-100">Contact Us</a>
+      </div>
     </div>
 
-    <div class="mt-6 text-center">
-      <button onclick="refreshPriceBoard()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all">
-        🔁 Refresh Prices
-      </button>
+    <!-- Right Image Slider -->
+    <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
+      <div
+        class="bg-white shadow-lg rounded-xl p-4 w-[400px] h-[280px] flex items-center justify-center overflow-hidden">
+        <img id="heroImage" src="https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg"
+          class="fade w-full h-full object-cover rounded-lg transition-opacity duration-1000 ease-in-out opacity-100"
+          alt="SastaSauda Products">
+      </div>
     </div>
+  </section>
+
+  <script>
+    const images = [
+      "https://www.lalpathlabs.com/blog/wp-content/uploads/2019/01/Fruits-and-Vegetables.jpg",
+      "https://medicaldialogues.in/h-upload/2022/09/17/750x450_185765-dairy-products.webp",
+      "https://distillique.co.za/cdn/shop/files/Untitled_design_13_1024x1024.webp",
+      "https://5.imimg.com/data5/SELLER/Default/2020/11/YU/DZ/HH/108920876/whole-spices-khade-masale.jpg",
+      "https://connect.healthkart.com/wp-content/uploads/2016/08/banner-56.jpg",
+      "https://www.kronen.eu/fileadmin/_processed_/7/5/csm_meat-fish-kronen-processing-machines_shutterstock_1920px_6ea5045a6e.jpg"
+    ];
+
+    let current = 0;
+    const heroImage = document.getElementById("heroImage");
+
+    setInterval(() => {
+      heroImage.style.opacity = "0"; // fade out
+      setTimeout(() => {
+        current = (current + 1) % images.length;
+        heroImage.src = images[current];
+        heroImage.style.opacity = "1"; // fade in
+      }, 1000); // wait for fade-out to complete
+    }, 2500);
+  </script>
+
+  <style>
+    /* Optional: Smooth fade transition */
+    #heroImage {
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+
+  <!--  Mandi Price Nearbyyyyyyyyyy-->
+
+  <section class="my-8 px-4" id="mandikaprice">
+    <br>
+    <br>
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg border border-green-500 p-6">
+      <h2 class="text-2xl font-bold mb-4 text-center text-green-700">Check Nearby Mandi Price</h2>
+
+      <!-- Location Selection -->
+      <div class="mb-4">
+        <label class="block text-green-700 font-medium mb-1">Select Location</label>
+        <select id="locationSelect"
+          class="w-full border border-green-500 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+          <option value="">-- Choose Location --</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Pune">Pune</option>
+          <option value="Delhi">Delhi</option>
+        </select>
+      </div>
+
+      <!-- Product Selection with Mic -->
+      <div id="productSection" class="mb-4 hidden">
+        <label class="block text-green-700 font-medium mb-1">Select Product</label>
+        <div class="flex gap-2">
+          <select id="productSelect"
+            class="flex-1 border border-green-500 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+            <option value="">-- Choose Product --</option>
+          </select>
+          <button id="micBtn" class="bg-green-500 text-white px-3 rounded hover:bg-green-600"
+            title="Speak product name">
+            🎤
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="resultSection" class="hidden">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Average Price in <span id="locationName"></span></h3>
+        <p id="avgPrice" class="mb-4 font-medium text-green-600"></p>
+
+        <table class="w-full border border-green-500 text-sm">
+          <thead>
+            <tr class="bg-green-100">
+              <th class="border border-green-500 p-2">Market Name</th>
+              <th class="border border-green-500 p-2">Price (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="marketsTable"></tbody>
+        </table>
+      </div>
+
+      <!-- Last Updated -->
+      <p class="text-xs text-gray-500 mt-4 text-right">Last updated today</p>
+    </div>
+
+    <script>
+      const data = {
+        "Mumbai": {
+          products: {
+            Tomato: [
+              { market: "Byculla Market", price: 42 },
+              { market: "Dadar Market", price: 44 },
+              { market: "Crawford Market", price: 41 }
+            ],
+            Onion: [
+              { market: "Byculla Market", price: 55 },
+              { market: "Dadar Market", price: 58 },
+              { market: "Crawford Market", price: 54 }
+            ],
+            Potato: [
+              { market: "Byculla Market", price: 35 },
+              { market: "Dadar Market", price: 37 },
+              { market: "Crawford Market", price: 36 }
+            ]
+          }
+        },
+        "Pune": {
+          products: {
+            Tomato: [
+              { market: "Shivaji Market", price: 38 },
+              { market: "Mahatma Phule Market", price: 39 },
+              { market: "Khadki Market", price: 37 }
+            ],
+            Onion: [
+              { market: "Shivaji Market", price: 50 },
+              { market: "Mahatma Phule Market", price: 51 },
+              { market: "Khadki Market", price: 49 }
+            ],
+            Potato: [
+              { market: "Shivaji Market", price: 32 },
+              { market: "Mahatma Phule Market", price: 33 },
+              { market: "Khadki Market", price: 31 }
+            ]
+          }
+        },
+        "Delhi": {
+          products: {
+            Tomato: [
+              { market: "Azadpur Mandi", price: 48 },
+              { market: "Okhla Mandi", price: 49 },
+              { market: "Ghazipur Mandi", price: 47 }
+            ],
+            Onion: [
+              { market: "Azadpur Mandi", price: 60 },
+              { market: "Okhla Mandi", price: 62 },
+              { market: "Ghazipur Mandi", price: 59 }
+            ],
+            Potato: [
+              { market: "Azadpur Mandi", price: 40 },
+              { market: "Okhla Mandi", price: 42 },
+              { market: "Ghazipur Mandi", price: 41 }
+            ]
+          }
+        }
+      };
+
+      const locationSelect = document.getElementById("locationSelect");
+      const productSelect = document.getElementById("productSelect");
+      const productSection = document.getElementById("productSection");
+      const resultSection = document.getElementById("resultSection");
+      const locationName = document.getElementById("locationName");
+      const avgPrice = document.getElementById("avgPrice");
+      const marketsTable = document.getElementById("marketsTable");
+      const micBtn = document.getElementById("micBtn");
+
+      // Step 1: Location selection
+      locationSelect.addEventListener("change", function () {
+        const location = this.value;
+        productSelect.innerHTML = '<option value="">-- Choose Product --</option>';
+        resultSection.classList.add("hidden");
+
+        if (location) {
+          const products = Object.keys(data[location].products);
+          products.forEach(prod => {
+            productSelect.innerHTML += `<option value="${prod}">${prod}</option>`;
+          });
+          productSection.classList.remove("hidden");
+        } else {
+          productSection.classList.add("hidden");
+        }
+      });
+
+      // Step 2: Product selection
+      productSelect.addEventListener("change", function () {
+        showProductPrice();
+      });
+
+      // Step 3: Show Product Price Function
+      function showProductPrice() {
+        const location = locationSelect.value;
+        const product = productSelect.value;
+
+        if (location && product) {
+          const productData = data[location].products[product];
+          const avg = (productData.reduce((sum, m) => sum + m.price, 0) / productData.length).toFixed(2);
+
+          locationName.textContent = location;
+          avgPrice.textContent = `Average price of ${product}: ₹${avg}`;
+
+          marketsTable.innerHTML = "";
+          productData.forEach(market => {
+            marketsTable.innerHTML += `
+            <tr>
+              <td class="border border-green-500 p-2">${market.market}</td>
+              <td class="border border-green-500 p-2">₹${market.price}</td>
+            </tr>
+          `;
+          });
+
+          resultSection.classList.remove("hidden");
+        } else {
+          resultSection.classList.add("hidden");
+        }
+      }
+
+      // Step 4: Voice Search for Product
+      micBtn.addEventListener("click", function () {
+        if (!('webkitSpeechRecognition' in window)) {
+          alert("Speech Recognition is not supported in this browser. Please use Chrome.");
+          return;
+        }
+
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-IN";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const spokenText = event.results[0][0].transcript.trim().toLowerCase();
+          let found = false;
+
+          for (let option of productSelect.options) {
+            if (option.value.toLowerCase() === spokenText) {
+              productSelect.value = option.value;
+              found = true;
+              showProductPrice();
+              break;
+            }
+          }
+
+          if (!found) {
+            alert(`No matching product found for "${spokenText}"`);
+          }
+        };
+      });
+    </script>
+
   </section>
 
   <script>
@@ -212,8 +399,8 @@
         const changeText = change > 0
           ? `<span class="text-green-600 font-semibold">▲ ₹${change}</span>`
           : change < 0
-          ? `<span class="text-red-600 font-semibold">▼ ₹${Math.abs(change)}</span>`
-          : `<span class="text-gray-500 font-semibold">—</span>`;
+            ? `<span class="text-red-600 font-semibold">▼ ₹${Math.abs(change)}</span>`
+            : `<span class="text-gray-500 font-semibold">—</span>`;
 
         const row = document.createElement('tr');
         row.classList.add('fade-in');
@@ -237,6 +424,7 @@
     // Initial Load
     refreshPriceBoard();
   </script>
+  <br>
 
   <!-- ✅ GROUP BUY SECTION -->
   <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-8 px-4">
@@ -296,9 +484,12 @@
     </div>
     <div class="mt-6">
       <a href="beapart.html"
-        class="bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2 rounded-lg text-sm">🚀 Be Part of the
-        Change</a>
+        class="bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-2 rounded-lg text-sm">🚀 Become the part of SastaSauda</a>
+        <br>
+
     </div>
+    <br>
+    <br>
   </div>
 
   <!-- ✅ CONTACT SECTION -->
@@ -315,7 +506,7 @@
           class="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl">📧
         </div>
         <h3 class="font-semibold mt-4">Email Us</h3>
-        <p class="text-sm text-gray-600 mt-1">sastasauda86@gmail.com</p>
+        <p class="text-sm text-gray-600 mt-1">sastasauda.help@gmail.com</p>
         <p class="text-xs text-gray-500 mt-2">For queries/partnerships</p>
       </div>
       <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
@@ -339,7 +530,8 @@
     <div class="mt-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
       <div class="flex-1 text-center md:text-left">
         <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Why Contact SastaSauda?</h2>
-        <p class="text-gray-600 mt-3 text-sm">Whether you’re a vendor looking for eco-conscious buyers, or a supplier wanting reliable vendor partnerships, VendorBuddy is your trusted platform for sustainable business.</p>
+        <p class="text-gray-600 mt-3 text-sm">Whether you’re a vendor looking for eco-conscious buyers, or a supplier
+          wanting reliable vendor partnerships, VendorBuddy is your trusted platform for sustainable business.</p>
       </div>
       <div class="flex-1 flex justify-center">
         <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Contact Illustration"
@@ -349,7 +541,7 @@
 
     <div class="mt-10 text-center text-xs text-gray-500">
       Created By <span class="text-green-700 font-medium">Mahika, Anand, Gaurav, Archit</span>. <br>
-      Let’s build a <span class="text-green-700 font-medium">greener vendor network</span>.
+      Jaha Sasta <span class="text-green-700 font-medium">Waha Sauda</span>.
     </div>
   </section>
 
